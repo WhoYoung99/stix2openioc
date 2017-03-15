@@ -5,7 +5,7 @@ from lxml import etree, objectify
 # internal
 from stix import *
 
-filename = os.path.join('STIX', 'Stix_xml_33.xml')
+filename = os.path.join('STIX', 'Stix_xml_42.xml')
 tree = etree.parse(open(filename))
 root = tree.getroot()
 # print(get_description(root))

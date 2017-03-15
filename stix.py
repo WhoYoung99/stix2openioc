@@ -34,6 +34,17 @@ def get_type(item):
     tag = ns_tag(item.nsmap['indicator'], 'Type')
     return item.findtext(tag)
 
+def get_hash(fileobj):
+    '''
+    to-do
+    '''
+    tag = ns_tag(fileobj.nsmap['cyboxCommon'], 'Hash')
+    item = fileobj.findall(tag)[0]
+    tag = ns_tag(fileobj.nsmap['cyboxCommon'], 'Type')
+    item = item.find(tag)
+    print(item.text, item.getnext().text)
+
+
 def get_value(item):
     '''
     to-do
@@ -44,7 +55,10 @@ def get_value(item):
     item = item.find(tag)
     tag = ns_tag(item.nsmap['cybox'], 'Properties')
     obser_obj = item.find(tag).getchildren()[0]
-    # try:
-    print(obser_obj.getnext())
-    return obser_obj.text, obser_obj.prefix,\
-           obser_obj.keys(), obser_obj.values()
+
+    fileobj = obser_obj.getnext()
+    if fileobj is not None:
+        get_hash(fileobj)
+    properties = tuple([obser_obj.text, obser_obj.prefix,
+                        obser_obj.keys(), obser_obj.values()])
+    return properties
