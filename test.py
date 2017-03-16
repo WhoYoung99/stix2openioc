@@ -1,18 +1,22 @@
 # build-in library
 import os
-from lxml import etree, objectify
+from lxml import etree
 
-# internal
+# external library
+from ioc_writer import ioc_api
+
+# internal library
 from stix import *
 
-filename = os.path.join('STIX', 'Stix_xml_42.xml')
+filename = os.path.join('STIX', 'Stix_xml_36.xml')
 tree = etree.parse(open(filename))
 root = tree.getroot()
-# print(get_description(root))
+print(get_description(root))
 
-
+# Parsing STIX file
 indicators = get_indicators(root)
 for i in indicators:
-    print(get_value(i))
-    # break
+    print(collect_info(i))
+
+# Writing OpenIOC file
 
