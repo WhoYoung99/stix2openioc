@@ -15,25 +15,17 @@ CONDITIONS = {
 }
 
 
-def _translate_id(id_):
-    """Process an id which is normalized and has 'openioc:item-' prepended
-    Args:
-        id: String to uniquely represent an observable or indicator
-    Returns:
-        If there is no id, None is returned.
-        Otherwise a normalized id with 'openioc:item-' prepended is returned.
-    """
-    if not id_:
-        return None
-    return STIX_ID_FMT % id_
-
-def create_ioc_object(items, ioc_name='Test Output'):
+def create_ioc_object(items, ioc_name, description):
     """TO-DO
     """
-    ioc = ioc_api.IOC(name=ioc_name)
+    ioc = ioc_api.IOC(name='STIX-format:{}'.format(ioc_name),
+                      description=description,
+                      author='Trend Micro')
     top_level_or_node = ioc.top_level_indicator
     for i in items:
-        top_level_or_node.append(create_node(i))
+        node = create_node(i)
+        if node is not None:
+            top_level_or_node.append(create_node(i))
     ioc.set_lastmodified_date()
     return ioc
 
@@ -42,7 +34,9 @@ def create_node(data):
     Args:
         dictionary object containing 'class' key
     """
-    makefunc = INDICATOR_MAP[data['class']]
+    makefunc = INDICATOR_MAP.get(data['class'], None)
+    if makefunc is None: 
+        return makefunc
     return makefunc(data)
 
 def create_dns(data):
@@ -90,7 +84,7 @@ def create_file(data):
         return create_file_name(condition, document, data['name'])
     elif hash_flag:
         if len(data['hash']) > 1:
-            node = ioc_api.make_indicator_node('AND')
+            node = ioc_api.make_indicator_node('OR')
             [node.append(create_file_hash(condition, document, h)) for h in data['hash']]
         elif len(data['hash']) == 1:
             return create_file_hash(condition, document, data['hash'][0])

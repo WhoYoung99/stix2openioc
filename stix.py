@@ -73,7 +73,8 @@ def get_properties_attr(obj):
     return attribute
 
 def collect_info(item):
-    """to-do
+    """Return a dict object containing parsed data
+    If property attribute is not supported, return empty dict
     """
     obj = get_properties_obj(item)
     attr = get_properties_attr(obj)
@@ -81,6 +82,9 @@ def collect_info(item):
     if attr in properties_attrmap:
         makefunc = properties_attrmap[attr]
         content = makefunc(obj)
+    else:
+        print('Unsupported Object: {}'.format(attr))
+        content = {}
     content['class'] = attr
     if description is not None:
         content['description'] = description
@@ -105,9 +109,7 @@ def get_fileobj_data(obj):
             data.update(i.attrib)
         elif tag == 'Hashes':
             flag_in_hash_section = True
-        if flag_in_hash_section and tag == 'Type':
-            hashtype = i.text
-        elif flag_in_hash_section and tag == 'Simple_Hash_Value':
+        if flag_in_hash_section and tag == 'Simple_Hash_Value':
             hashvalue = i.text
             if data.get('hash', None) is None:
                 data['hash'] = [hashvalue,]

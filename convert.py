@@ -10,10 +10,11 @@ from ioc_writer import ioc_api
 from stix import *
 from translate import *
 
-filename = os.path.join('STIX', 'Stix_xml_36.xml')
-tree = etree.parse(open(filename))
+filename = 'Stix_xml_33.xml'
+filepath = os.path.join('STIX', filename)
+tree = etree.parse(open(filepath))
 root = tree.getroot()
-print(get_description(root))
+description = get_description(root)
 
 # Parsing STIX file
 indicators = get_indicators(root)
@@ -23,6 +24,6 @@ items = [collect_info(i) for i in indicators]
 #     print(data)
 
 # Writing OpenIOC file
-ioc = create_ioc_object(items)
+ioc = create_ioc_object(items, filename, description)
 ioc.write_ioc_to_file('STIX')
 # sys.exit(0)
