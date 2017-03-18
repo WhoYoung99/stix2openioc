@@ -1,0 +1,588 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ioc id="f58aa3e2-ed05-11e6-87a0-6805ca11cf2e" last-modified="2017-02-07T07:20:53" xmlns="http://schemas.mandiant.com/2010/ioc" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <short_description>OpenIOC For Sample: 7AF03C6AA627788CF5ABF9C141F9F223F571447C</short_description>
+ <authored_by>Trend Micro - Virtual Analyzer</authored_by>
+ <authored_date>2017-02-07T07:20:53</authored_date>
+ <definition>
+  <Indicator id="f58aa068-ed05-11e6-87a0-6805ca11cf2e" operator="OR">
+   <!--Sandbox Group ID:[253D69B986DA6FB1]-->
+   <Indicator id="b1ff2120-ed05-11e6-a056-6805ca11cf2e" operator="OR">
+    <IndicatorItem condition="is" id="b1ff26a2-ed05-11e6-a056-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+     <Content type="string">28B7FC856E7C4C8099476500010CC2F241C0A274</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="is" id="b1ff27f6-ed05-11e6-a056-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+     <Content type="string">42D04E571AD559B16F8E47C2EAD8E290</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="is" id="b1ff2918-ed05-11e6-a056-6805ca11cf2e">
+     <Context document="Network" search="Network/DNS" type="mir" />
+     <Content type="string">www.lablack.net</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b1ff2a30-ed05-11e6-a056-6805ca11cf2e">
+     <Context document="UrlHistoryItem" search="UrlHistoryItem/URL" type="mir" />
+     <Content type="string">http://www.lablack.net/info.php</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b1ff2b48-ed05-11e6-a056-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\WER21D7.tmp.appcompat.txt</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b1ff2c60-ed05-11e6-a056-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\WERD35.tmp.WERInternalMetadata.xml</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b1ff2d78-ed05-11e6-a056-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\WER21D7.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b1ff2e86-ed05-11e6-a056-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\WERD35.tmp</Content>
+    </IndicatorItem>
+   </Indicator>
+   <!--Sandbox Group ID:[253D69B986DA6FB1]-->
+   <Indicator id="b62ea78e-ed05-11e6-be98-6805ca11cf2e" operator="OR">
+    <IndicatorItem condition="is" id="b62ead88-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+     <Content type="string">6C9DCA9E8881018E514D054F8C4A232CEB796413</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="is" id="b62eaed2-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+     <Content type="string">405BEDF1FF104B0D2F27FE7054869EFC</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62eaffe-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\6c9dca9e8881018e514d054f8c4a232ceb796413.exe</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62eb10c-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\rar.exe</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62eb22e-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Desktop\tst.tst</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62eb346-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Desktop\personalblank.doc</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62eb454-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Desktop\OpenVPN.txt</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62eb558-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Desktop\account.xls</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62eb6b6-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Documents\agreement.doc</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62eb832-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Documents\tst.tst</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62eb954-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\contact.pab</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62eba6c-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\tst.tst</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62ebb70-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\contact.ost</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62ebc7e-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\contact.oab</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62ebd8c-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\contact.pst</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62ebe90-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\project.pptx</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62ebf9e-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\project.ppt</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62ec0ca-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\agreement.docx</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62ec1d8-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\agreement.doc</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62ec2f0-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\account.xlsx</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62ec408-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\account.xls</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b62ec516-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\clsign.dll</Content>
+    </IndicatorItem>
+    <Indicator id="b62ec67e-ed05-11e6-be98-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b62ec836-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b62ec94e-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49180</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b62eca66-ed05-11e6-be98-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b62ecb60-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b62ecc6e-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49179</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b62ecd72-ed05-11e6-be98-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b62ece6c-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b62ecf7a-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49178</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b62ed07e-ed05-11e6-be98-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b62ed178-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b62ed27c-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49177</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b62ed380-ed05-11e6-be98-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b62ed47a-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b62ed57e-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49176</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b62ed682-ed05-11e6-be98-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b62ed77c-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b62ed880-ed05-11e6-be98-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49175</Content>
+     </IndicatorItem>
+    </Indicator>
+   </Indicator>
+   <!--Sandbox Group ID:[638AAC3DB25A69BF]-->
+   <Indicator id="9b5ad57c-ed05-11e6-be98-6805ca11cf2e" operator="OR">
+    <IndicatorItem condition="is" id="9b5adc84-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+     <Content type="string">28B7FC856E7C4C8099476500010CC2F241C0A274</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="is" id="9b5addf6-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+     <Content type="string">42D04E571AD559B16F8E47C2EAD8E290</Content>
+    </IndicatorItem>
+   </Indicator>
+   <!--Sandbox Group ID:[638AAC3DB25A69BF]-->
+   <Indicator id="f4c91114-ed05-11e6-87a0-6805ca11cf2e" operator="OR">
+    <IndicatorItem condition="is" id="f4c91790-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+     <Content type="string">6C9DCA9E8881018E514D054F8C4A232CEB796413</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="is" id="f4c918f8-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+     <Content type="string">405BEDF1FF104B0D2F27FE7054869EFC</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c91a2e-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\6c9dca9e8881018e514d054f8c4a232ceb796413.exe</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c91b64-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Desktop\Resource.txt.cry</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c91c90-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\tst.tst</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c91db2-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\clsign.dll</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c91ede-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Desktop\Resource.txt</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c92000-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Desktop\tst.tst</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c9212c-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Desktop\personalblank.doc</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c9224e-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Desktop\OpenVPN.txt</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c9237a-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Desktop\account.xls</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c92492-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\My Documents\agreement.doc</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c925be-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\My Documents\tst.tst</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c926e0-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\contact.pab</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c927f8-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\contact.ost</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c9291a-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\contact.oab</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c92a3c-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\contact.pst</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c92b72-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\project.pptx</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c92c9e-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\project.ppt</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c92dc0-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\agreement.docx</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c92eec-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\agreement.doc</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c93036-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\account.xlsx</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c93162-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\account.xls</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c93284-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\TarA.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c933a6-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Cab9.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c934be-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Tar8.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c935ea-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Cab7.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c9370c-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Tar6.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c9382e-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\Cab5.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="f4c93950-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\rar.exe</Content>
+    </IndicatorItem>
+    <Indicator id="f4c93a9a-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="f4c93ba8-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="f4c93cfc-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">1055</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="f4c93e1e-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="f4c93f2c-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="f4c9404e-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">1054</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="f4c94166-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="f4c94274-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="f4c94396-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">1053</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="f4c944ae-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="f4c945c6-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="f4c946de-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">1052</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="f4c94800-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="f4c94918-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="f4c94a3a-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">1051</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="f4c94c06-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="f4c94ddc-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">127.0.0.1</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="f4c94fda-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">1050</Content>
+     </IndicatorItem>
+    </Indicator>
+   </Indicator>
+   <!--Sandbox Group ID:[A438112341E09F9A]-->
+   <Indicator id="b147a554-ed05-11e6-be98-6805ca11cf2e" operator="OR">
+    <IndicatorItem condition="is" id="b147ae1e-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+     <Content type="string">28B7FC856E7C4C8099476500010CC2F241C0A274</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="is" id="b147b04e-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+     <Content type="string">42D04E571AD559B16F8E47C2EAD8E290</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="is" id="b147b238-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="Network" search="Network/DNS" type="mir" />
+     <Content type="string">www.lablack.net</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b147b42c-ed05-11e6-be98-6805ca11cf2e">
+     <Context document="UrlHistoryItem" search="UrlHistoryItem/URL" type="mir" />
+     <Content type="string">http://www.lablack.net/info.php</Content>
+    </IndicatorItem>
+   </Indicator>
+   <!--Sandbox Group ID:[A438112341E09F9A]-->
+   <Indicator id="b823e644-ed05-11e6-87a0-6805ca11cf2e" operator="OR">
+    <IndicatorItem condition="is" id="b823ec16-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+     <Content type="string">6C9DCA9E8881018E514D054F8C4A232CEB796413</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="is" id="b823ed60-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+     <Content type="string">405BEDF1FF104B0D2F27FE7054869EFC</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823eedc-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\6c9dca9e8881018e514d054f8c4a232ceb796413.exe</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823f044-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\agreement.doc.cry</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823f166-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\tst.tst</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823f2d8-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\account.xlsx</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823f3f0-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\account.xls</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823f508-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\project.pptx</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823f616-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\project.ppt</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823f72e-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\agreement.docx</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823f846-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\agreement.doc</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823f95e-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\TarFDC3.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823fac6-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\CabFDC2.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823fbd4-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\TarDCCA.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823fce2-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\CabDCC9.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823fdf0-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\TarD0B7.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b823fefe-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\CabD0B6.tmp</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b8240002-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\rar.exe</Content>
+    </IndicatorItem>
+    <IndicatorItem condition="contains" id="b8240110-ed05-11e6-87a0-6805ca11cf2e">
+     <Context document="FileItem" search="FileItem/FullPath" type="mir" />
+     <Content type="string">\clsign.dll</Content>
+    </IndicatorItem>
+    <Indicator id="b8240264-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b8240368-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b824046c-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49173</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b8240570-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b8240674-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b82407aa-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49172</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b82408cc-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b82409da-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b8240af2-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49171</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b8240fd4-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b824110a-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b8241218-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49170</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b8241326-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b824142a-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b824152e-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49169</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b8241632-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b824172c-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b8241830-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49168</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b8241934-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b8241a2e-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b8241b96-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49167</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b8241d08-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b8241e66-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b8241f74-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49166</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b8242078-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b824217c-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">0.0.0.0</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b824228a-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">49165</Content>
+     </IndicatorItem>
+    </Indicator>
+    <Indicator id="b8242398-ed05-11e6-87a0-6805ca11cf2e" operator="AND">
+     <IndicatorItem condition="is" id="b8242492-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localIP" type="mir" />
+      <Content type="string">127.0.0.1</Content>
+     </IndicatorItem>
+     <IndicatorItem condition="is" id="b82425a0-ed05-11e6-87a0-6805ca11cf2e">
+      <Context document="PortItem" search="PortItem/localPort" type="mir" />
+      <Content type="int">58177</Content>
+     </IndicatorItem>
+    </Indicator>
+   </Indicator>
+  </Indicator>
+ </definition>
+</ioc>
