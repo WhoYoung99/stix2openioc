@@ -4,9 +4,10 @@ import sys
 from lxml import etree
 
 # external library
-from ioc_writer import ioc_api
+# from ioc_writer import ioc_api
 
 # internal library
+from ioc import *
 from stix import *
 from translate import *
 

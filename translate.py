@@ -1,7 +1,8 @@
 """
 TO-DO
 """
-from ioc_writer import ioc_api
+# from ioc_writer import ioc_api
+from ioc import *
 
 # ID format for translated STIX items
 STIX_ID_FMT = 'stix:item-%s'
@@ -35,7 +36,7 @@ def create_node(data):
         dictionary object containing 'class' key
     """
     makefunc = INDICATOR_MAP.get(data['class'], None)
-    if makefunc is None: 
+    if makefunc is None:
         return makefunc
     return makefunc(data)
 
@@ -48,11 +49,11 @@ def create_dns(data):
     content_type = 'string'
     content = data.get('domain', None)
 
-    return ioc_api.make_indicatoritem_node(condition,
-                                           document,
-                                           search,
-                                           content_type,
-                                           content)
+    return make_indicatoritem_node(condition,
+                                   document,
+                                   search,
+                                   content_type,
+                                   content)
 
 def get_hash_class(hashstr):
     """TO-DO
@@ -96,21 +97,21 @@ def create_file_name(condition, document, filename):
     """TO-DO
     """
     search = 'FileItem/FileName'
-    return ioc_api.make_indicatoritem_node(condition,
-                                           document,
-                                           search,
-                                           'string',
-                                           filename)
+    return make_indicatoritem_node(condition,
+                                   document,
+                                   search,
+                                   'string',
+                                   filename)
 
 def create_file_hash(condition, document, filehash):
     """TO-DO
     """
     search = get_hash_class(filehash)
-    return ioc_api.make_indicatoritem_node(condition,
-                                           document,
-                                           search,
-                                           'string',
-                                           filehash)
+    return make_indicatoritem_node(condition,
+                                   document,
+                                   search,
+                                   'string',
+                                   filehash)
 
 
 def create_addr(data):
@@ -121,11 +122,11 @@ def create_addr(data):
     search = 'PortItem/localIP'
     content_type = 'string'
     content = data.get('address', None)
-    return ioc_api.make_indicatoritem_node(condition,
-                                           document,
-                                           search,
-                                           content_type,
-                                           content)
+    return make_indicatoritem_node(condition,
+                                   document,
+                                   search,
+                                   content_type,
+                                   content)
 
 INDICATOR_MAP = {
     'FileObj:FileObjectType': create_file,
