@@ -8,6 +8,14 @@ NSMAP = {'xsi': 'http://www.w3.org/2001/XMLSchema-instance',
          'xsd': 'http://www.w3.org/2001/XMLSchema', }
 
 VALID_INDICATOR_OPERATORS = ['AND', 'OR']
+VALID_INDICATORITEM_CONDITIONS = ['IS',
+                                  'CONTAINS',
+                                  'MATCHES',
+                                  'STARTS_WITH',
+                                  'ENDS_WITH',
+                                  'GREATER_THAN',
+                                  'LESS_THAN']
+
 
 def create_uuid():
     """Create unique ID for items
@@ -21,13 +29,13 @@ def get_current_date():
     timestring = time.strftime('%Y-%m-%dT%H:%M:%S')
     return timestring
 
-def set_root_lastmodified(_root, date=None):
-    """TODO
-    """
-    if date:
-        _root.attrib['last-modified'] = date
-    else:
-        _root.attrib['last-modified'] = get_current_date()
+def make_definition_node(indicator_node=None):
+    definition_node = ET.Element('definition')
+    if indicator_node is not None:
+        if indicator_node.tag != 'Indicator':
+            raise ValueError('IndicatorNode has the incorrect tag.')
+        definition_node.append(indicator_node)
+    return definition_node
 
 def make_ioc_root(iocid=None):
     """TODO
@@ -55,7 +63,17 @@ def make_author_node(author='Trend Micro STIX-converter'):
     node.text = author
     return node
 
-def write_ioc_to_file(root, output_dir=None, force=False):
+def make_author_date(date=None):
+    """TODO
+    """
+    node = ET.Element('authored_date')
+    if date:
+        node.text = date
+    else:
+        node.text = get_current_date()
+    return node
+
+def write_ioc_to_file(root, name, output_dir=None, force=False):
     """
     Serialize an IOC, as defined by a set of etree Elements, to a .IOC file.
     :param root: etree Element to write out.  Should have the tag 'OpenIOC'
@@ -72,10 +90,10 @@ def write_ioc_to_file(root, output_dir=None, force=False):
     try:
         encoding = tree.docinfo.encoding
     except:
-        log.debug('Failed to get encoding from docinfo')
         encoding = default_encoding
-    ioc_id = root.attrib['id']
-    fn = ioc_id + '.ioc'
+    # ioc_id = root.attrib['id']
+    # fn = ioc_id + '.ioc'
+    fn = 'ConvertFrom_' + name + '.ioc'
     if output_dir:
         fn = os.path.join(output_dir, fn)
     else:
@@ -86,11 +104,29 @@ def write_ioc_to_file(root, output_dir=None, force=False):
                                    encoding=encoding,
                                    xml_declaration=True,
                                    pretty_print=True))
-    except (IOError, OSError):
-        return False
+    except (IOError, OSError) as err:
+        sys.exit(err)
     except:
         raise
     return True
+
+def make_context_node(document, search, context_type='mir'):
+    """TODO
+    """
+    context_node = ET.Element('Context')
+    context_node.attrib['document'] = document
+    context_node.attrib['search'] = search
+    if context_type:
+        context_node.attrib['type'] = context_type
+    return context_node
+
+def make_content_node(ctype, content):
+    """TODO
+    """
+    content_node = ET.Element('Content')
+    content_node.attrib['type'] = ctype
+    content_node.text = content
+    return content_node
 
 def make_indicator_node(operator, nid=None):
     """
@@ -121,7 +157,8 @@ def make_indicatoritem_node(condition,
                             nid=None):
     """
     This makes a IndicatorItem element.  This contains the actual threat intelligence in the IOC.
-    :param condition: This is the condition of the item ('is', 'contains', 'matches', etc). The following contants in ioc_api may be used:
+    :param condition: This is the condition of the item ('is', 'contains', 'matches', etc).
+                      The following contants in ioc_api may be used:
 ==================== =====================================================
 Constant             Meaning
 ==================== =====================================================
@@ -135,19 +172,21 @@ ioc_api.LESS_THAN    Integer match indicator a less than (<) operation.
 ==================== =====================================================
     :param document: Denotes the type of document to look for the encoded artifact in.
     :param search: Specifies what attribute of the document type the encoded value is.
-    :param content_type: This is the display type of the item. This is normally derived from the iocterm for the search value.
+    :param content_type: This is the display type of the item.
+                         This is normally derived from the iocterm for the search value.
     :param content: The threat intelligence that is being encoded.
     :param preserve_case: Specifiy that the content should be treated in a case sensitive manner.
     :param negate: Specifify that the condition is negated. An example of this is:
        @condition = 'is' & @negate = 'true' would be equal to the
        @condition = 'isnot' in OpenIOC 1.0.
     :param context_type: Gives context to the document/search information.
-    :param nid: This is used to provide a GUID for the IndicatorItem. The ID should NOT be specified under normal
+    :param nid: This is used to provide a GUID for the IndicatorItem.
+                The ID should NOT be specified under normal
      circumstances.
     :return: an elementTree Element item
     """
     # validate condition
-    if condition not in VALID_INDICATORITEM_CONDITIONS:
+    if condition.upper() not in VALID_INDICATORITEM_CONDITIONS:
         raise ValueError('Invalid IndicatorItem condition [{}]'.format(condition))
     ii_node = ET.Element('IndicatorItem')
     if nid:
@@ -155,14 +194,9 @@ ioc_api.LESS_THAN    Integer match indicator a less than (<) operation.
     else:
         ii_node.attrib['id'] = create_uuid()
     ii_node.attrib['condition'] = condition
-    
-    context_node = ioc_et.make_context_node(document, search, context_type)
-    content_node = ioc_et.make_content_node(content_type, content)
+
+    context_node = make_context_node(document, search, context_type)
+    content_node = make_content_node(content_type, content)
     ii_node.append(context_node)
     ii_node.append(content_node)
     return ii_node
-
-root = make_ioc_root()
-root.append(make_description_node('Some description about the IOC.'))
-root.append(make_author_node())
-sys.exit(write_ioc_to_file(root, output_dir=None, force=False))

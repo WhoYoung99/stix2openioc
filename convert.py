@@ -1,30 +1,55 @@
 # build-in library
 import os
 import sys
+import argparse
+import logging
 from lxml import etree
 
-# external library
-# from ioc_writer import ioc_api
-
 # internal library
-from ioc import *
-from stix import *
-from translate import *
+import ioc
+import stix
+import translate
 
-filename = 'Stix_xml_33.xml'
-filepath = os.path.join('STIX', filename)
-tree = etree.parse(open(filepath))
-root = tree.getroot()
-description = get_description(root)
 
-# Parsing STIX file
-indicators = get_indicators(root)
-items = [collect_info(i) for i in indicators]
-# for i in indicators:
-#     data = collect_info(i)
-#     print(data)
+def main(options):
+    """todo
+    """
+    loc = os.getcwd()
+    filepath = os.path.join(loc, options.src_file)
+    try:
+        tree = etree.parse(open(filepath))
+    except FileNotFoundError as err:
+        sys.exit(err)
+    root = tree.getroot()
+    description = stix.get_description(root)
 
-# Writing OpenIOC file
-ioc = create_ioc_object(items, filename, description)
-ioc.write_ioc_to_file('STIX')
-# sys.exit(0)
+    indicators = stix.get_indicators(root)
+    items = [stix.collect_info(i) for i in indicators]
+
+    nodes = translate.create_ioc_object(items, description)
+    print('Output file: %s' % options.src_file)
+    outpath = os.getcwd()
+    if options.output_dir is not None:
+        outpath = os.path.join(outpath, options.output_dir)
+    print('Output path: %s' % outpath)
+    sys.exit(ioc.write_ioc_to_file(nodes,
+                                   options.src_file,
+                                   output_dir=options.output_dir,
+                                   force=False))
+
+
+def makeargparser():
+    """Parse arguments about target file
+    """
+    parser = argparse.ArgumentParser(description='Convert a STIX to OpenIOC format.')
+    parser.add_argument('-s', '--source', dest='src_file', required=True, type=str,
+                        help='source file (.xml, .stix) containing IOC data')
+    parser.add_argument('-o', '--output_dir', dest='output_dir', default=None,
+                        help='location to write IOC to. default is current working directory')
+    return parser
+
+
+if __name__ == '__main__':
+    PARSER = makeargparser()
+    OPTS = PARSER.parse_args()
+    main(OPTS)

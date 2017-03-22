@@ -68,9 +68,11 @@ def get_properties_obj(item):
 def get_properties_attr(obj):
     """to-do
     """
+    if obj is None:
+        return None
     tag = ns_tag(obj.nsmap['xsi'], 'type')
     attribute = obj.attrib.get(tag)
-    return attribute
+    return attribute.split(':')[1]
 
 def collect_info(item):
     """Return a dict object containing parsed data
@@ -83,7 +85,7 @@ def collect_info(item):
         makefunc = properties_attrmap[attr]
         content = makefunc(obj)
     else:
-        print('Unsupported Object: {}'.format(attr))
+        # print('Unsupported Object: {}'.format(attr))
         content = {}
     content['class'] = attr
     if description is not None:
@@ -109,8 +111,12 @@ def get_fileobj_data(obj):
             data.update(i.attrib)
         elif tag == 'Hashes':
             flag_in_hash_section = True
-        if flag_in_hash_section and tag == 'Simple_Hash_Value':
-            hashvalue = i.text
+        if (flag_in_hash_section) and (tag == 'Simple_Hash_Value'):
+            if i.text != None:
+                hashvalue = i.text
+            else:
+                flag_in_hash_section = False
+                continue
             if data.get('hash', None) is None:
                 data['hash'] = [hashvalue,]
             else:
@@ -146,7 +152,7 @@ def get_domainobj_data(obj):
     return data
 
 properties_attrmap = {
-    'DomainNameObj:DomainNameObjectType': get_domainobj_data,
-    'FileObj:FileObjectType': get_fileobj_data,
-    'AddressObj:AddressObjectType': get_addrobj_data,
+    'DomainNameObjectType': get_domainobj_data,
+    'FileObjectType': get_fileobj_data,
+    'AddressObjectType': get_addrobj_data,
 }

@@ -16,18 +16,19 @@ CONDITIONS = {
 }
 
 
-def create_ioc_object(items, ioc_name, description):
+def create_ioc_object(items, description):
     """TO-DO
     """
-    ioc = ioc_api.IOC(name='STIX-format:{}'.format(ioc_name),
-                      description=description,
-                      author='Trend Micro')
-    top_level_or_node = ioc.top_level_indicator
+    ioc = make_ioc_root()
+    ioc.append(make_description_node(description))
+    ioc.append(make_author_node())
+    ioc.append(make_author_date())
+    top_level_or_node = make_indicator_node('OR')
     for i in items:
         node = create_node(i)
         if node is not None:
             top_level_or_node.append(create_node(i))
-    ioc.set_lastmodified_date()
+    ioc.append(make_definition_node(top_level_or_node))
     return ioc
 
 def create_node(data):
@@ -66,7 +67,7 @@ def get_hash_class(hashstr):
     elif len(hashstr) == 64:
         return 'FileItem/Sha256sum'
     else:
-        return None
+        return 'FileHashes'
 
 def create_file(data):
     """TO-DO
@@ -77,7 +78,7 @@ def create_file(data):
     hash_flag = data.get('hash', False)
 
     if name_flag and hash_flag:
-        node = ioc_api.make_indicator_node('AND')
+        node = make_indicator_node('AND')
         node.append(create_file_name(condition, document, data['name']))
         [node.append(create_file_hash(condition, document, h)) for h in data['hash']]
         return node
@@ -85,7 +86,7 @@ def create_file(data):
         return create_file_name(condition, document, data['name'])
     elif hash_flag:
         if len(data['hash']) > 1:
-            node = ioc_api.make_indicator_node('OR')
+            node = make_indicator_node('OR')
             [node.append(create_file_hash(condition, document, h)) for h in data['hash']]
         elif len(data['hash']) == 1:
             return create_file_hash(condition, document, data['hash'][0])
@@ -129,7 +130,7 @@ def create_addr(data):
                                    content)
 
 INDICATOR_MAP = {
-    'FileObj:FileObjectType': create_file,
-    'AddressObj:AddressObjectType': create_addr,
-    'DomainNameObj:DomainNameObjectType': create_dns,
+    'FileObjectType': create_file,
+    'AddressObjectType': create_addr,
+    'DomainNameObjectType': create_dns,
 }
